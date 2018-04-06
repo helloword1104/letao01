@@ -1,3 +1,22 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+ul {
+  list-style: none;
+}
+html,body {
+  width: 100%;
+  height: 100%;
+  /*background-color: pink;*/
+}
+a:link,
+a:visited,
+a:hover,
+a:active {
+  text-decoration: none;
+}
+/* 1. 登录页面的基本样式 */
 .body_bg {
   background-color: #222D32;
 }
@@ -9,3 +28,119 @@
   line-height: 40px;
   font-size: 20px;
 }
+
+/*
+** 2. 主页样式
+** 2.1 左侧菜单栏
+*/
+
+.lt_aside {
+  width: 180px;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #222D32;
+  z-index:9999;
+  transition: all 1s;
+}
+.lt_aside.hidemenu {
+  left: -180px;
+}
+.lt_header {
+  width: 180px;
+  height: 50px;
+  line-height:50px;
+  text-align: center;
+  background-color: #367FA9;
+  color: white;
+  font-size: 24px;
+
+}
+
+.user {
+  width: 180px;
+  height: 150px;
+}
+.user img {
+  width: 80px;
+  height: 80px;
+  display: block;
+  border-radius: 50%;
+  margin: 0 auto;
+  margin-top:30px;
+  margin-bottom:10px;
+}
+.user p {
+  color: white;
+  text-align: center;
+  font-size: 16px;
+}
+
+/* 二级菜单开始 */
+.nav a {
+  height: 40px;
+  line-height: 40px;
+  display: block;
+  padding-left:40px;
+  color:#CCCCCC;
+  /* 给a 添加一个3px的透明边框这样不会出现添加类上去出现抖动的现象 */
+  border-left:3px solid transparent;
+}
+.nav a i {
+  margin-right:5px;
+}
+/* 给每一类 为边框 谁要就给谁添加 方便js操作 */
+.nav a.current {
+  background-color: #1D1F21;
+  border-left:3px solid #006699;
+}
+.child {
+  padding-left:20px;
+}
+/* 二级菜单结束 */
+
+/* 右侧头部样式开始 */
+.main {
+  width: 100%;
+  overflow: hidden;
+}
+.main_header {
+  width: 100%;
+  height: 50px;
+  background-color: #3C8DBC;
+  line-height:50px;
+  position: fixed;
+  right: 0;
+  top: 0;
+  padding-left: 180px;
+  transition: all 1s;
+}
+.main_header.hidemenu {
+  padding-left: 0;
+}
+.main_header a {
+  width: 50px;
+  height: 50px;
+  text-align: center;
+}
+.main_header  i {
+  color: white;
+  font-size:16px;
+}
+
+/* 头部样式结束 */
+/* 下面内容样式开始 */
+.container-fluid {
+  margin-left:180px;
+  margin-top:70px;
+  transition: all 1s;
+}
+.container-fluid.hidemenu {
+  margin-left:0px;
+}
+
+.red {
+  color: #BC4442;
+}
+/* 下面内容样式结束 */

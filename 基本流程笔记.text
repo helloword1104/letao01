@@ -4,3 +4,40 @@
 4. 新建一个新的分支登录login 命令:git checkout -b login 新建分支并且指针转移
 5. webstorm开始书写登录的功能代码
 6. 静态登录验证写完 将工作去代码 添加到暂存区  然后  添加到 本地仓库
+
+7. 验证 不能为空 长度验证  web页面的表单验证通过后 .
+8. $('#form').on("success.form.bv", function( e ) {},根据ajax请求后台数据
+再次验证,判断成功和返回的数字 ,根据表单插件的updatestatus进行callback回调,在
+不刷新页面的情况下继续验证表单
+9. 登录按钮 成功就跳转到主页面 添加一个location.href
+10. 重置按钮 插件自带的属性只能重置文本 所以引出插件的一个方法, $("#form").data("bootstrapValidator").resetForm(); 重置表单的字体图标,可以传true 同时清除文本和字体图标
+这里不传也可以!
+11. login页面的基本功能实现 ,使用git 添加到login分支 然后提交 切换主分支合并 最后删除login分支 开启新的index分支
+
+
+开始主页的代码
+12. 主页分左右两个部分 左边全部固定定位 上面头像和介绍 使用宽度剩余法计算
+13. 二级菜单基本样式布局
+14. 右侧布局 头部也是一个固定定位 但是这边的固定定位需要处理两个点
+第一个: 左侧的固定定位不占位置 需要右侧定位自己paddingleft 挤自己的内容 并且左侧需要给自己一个
+层级不然会被右侧的固定定位覆盖
+第二个:下面的主体内容也要给自己一个padding-left或者margin-left 因为左侧全部都是固定定位
+15. 下面的路径导航 是一个bootstrap的组件 --路径导航
+
+
+16.js代码 npprogress 插件
+ 1. ajaxStart在开始一个ajax请求时触发
+
+                     //beforeSend回调函数
+2. ajaxSend在beforeSend回调函数之后触发
+
+                      //success回调函数
+3. ajaxSuccess在success回调函数之后触发
+
+                     //error
+4. ajaxError在error回调函数之后触发
+
+                      //complete
+5. ajaxComplete在complete回调函数之后触发
+
+6. ajaxStop在ajax请求结束时触发

@@ -2,9 +2,103 @@
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
-  <title>Title</title>
+  <title>乐淘电商</title>
+  <!-- 引入bootstrap.css文件 -->
+  <link rel="stylesheet" href="./lib/bootstrap/css/bootstrap.css">
+  <!-- 引入一个基于bootstrap的表单验证的validator.css的文件-->
+  <link rel="stylesheet" href="./lib/bootstrap-validator/css/bootstrapValidator.css">
+  <!-- 引入插件进度条插件样式 -->
+  <link rel="stylesheet" href="./lib/nprogress/nprogress.css">
+  <!-- 引入本地的css样式 -->
+  <link rel="stylesheet" href="./css/common.css">
+
 </head>
 <body>
-<div>新建文本</div>
+<!--布局分左右-->
+<!--左侧菜单栏-->
+<div class="lt_aside">
+  <!-- 标题 -->
+    <div class="lt_header">黑马19期</div>
+  <!-- 头像和简介 -->
+  <!-- 添加一个盒子 宽度剩余法让下面的内容自动隔开 不用padding margin-->
+  <div class="user">
+    <img src="./images/default.jpg" >
+    <p>超级管理员</p>
+  </div>
+
+
+  <!-- 二级菜单 -->
+  <div class="nav">
+    <ul>
+      <li><a href="#"><i class="glyphicon glyphicon-user"></i><span>用户管理</span></a></li>
+      <li>
+        <a href="#" class="category"><i class="glyphicon glyphicon-list"></i><span>分类管理</span></a>
+        <!-- 二级菜单 -->
+        <div class="child" style="display: none;">
+          <a href="frist">一级分类</a>
+          <a href="second">二级分类</a>
+        </div>
+      </li>
+      <li><a href="#"><i class="glyphicon glyphicon-tags"></i><span>商品管理</span></a></li>
+    </ul>
+  </div>
+</div>
+
+<!-- 右侧内容部分上下-->
+
+<div class="main">
+    <!-- 上面的固定导航 -->
+  <!-- 这里用bootstrap的容器 -->
+  <div class="main_header">
+    <a class="pull-left main_menu" href="#"><i class="glyphicon glyphicon-align-justify"></i></a>
+    <a class="pull-right main_logout" href="#"><i class="glyphicon glyphicon-log-out"></i></a>
+  </div>
+  <!--右侧下面的内容 使用bootstrap的容器 container-fluid-->
+
+
+  <div class="container-fluid">
+    <ol class="breadcrumb">
+      <li><a href="index.html">管理系统</a></li>
+      <li class="active">首页</li>
+    </ol>
+  </div>
+</div>
+
+
+<!-- 登录退出的模态框,  配置 data-dismiss="modal" 可以关闭模态框 -->
+<div class="modal fade" id="logoutModal">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+        <h4 class="modal-title">温馨提示</h4>
+      </div>
+      <div class="modal-body">
+        <p class="red"><i class="glyphicon glyphicon-info-sign"></i>您确定要退出后台管理系统吗？</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+        <button type="button" class="btn btn-primary" id="logoutBtn">退出</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+<!--引入jquery的js文件 -->
+<script src="./lib/jquery/jquery.js"></script>
+<!--引入bootstrap的js文件-->
+<script src="./lib/bootstrap/js/bootstrap.js"></script>
+<!--引入基于bootstrap的表单验证的js文件-->
+<script src="./lib/bootstrap-validator/js/bootstrapValidator.js"></script>
+<!-- 引入插件进度条的js文件 -->
+<script src="./lib/nprogress/nprogress.js"></script>
+<!-- 引入自己的js文件-->
+<script src="./js/common.js"></script>
+
 </body>
 </html>
