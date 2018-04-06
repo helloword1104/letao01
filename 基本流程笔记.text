@@ -1,0 +1,6 @@
+1. 搭建环境 node.js 环境 shift+右击 npm start开启环境
+2. phpstudy服务器 mysql管理器 第一个front导入 乐淘数据库
+3. github 新建一个远程仓库 将乐淘项目初始化并且推送到远程仓库
+4. 新建一个新的分支登录login 命令:git checkout -b login 新建分支并且指针转移
+5. webstorm开始书写登录的功能代码
+6. 静态登录验证写完 将工作去代码 添加到暂存区  然后  添加到 本地仓库
