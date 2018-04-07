@@ -41,3 +41,5 @@
 5. ajaxComplete在complete回调函数之后触发
 
 6. ajaxStop在ajax请求结束时触发
+
+

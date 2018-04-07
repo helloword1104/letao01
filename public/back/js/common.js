@@ -29,6 +29,22 @@ $(document).ajaxStop(function () {
 //},1000)
 
 
+//   ajax请求  拦截到登陆页面的功能
+//  console.log(location.href.indexOf("login.html"));
+if( location.href.indexOf("login.html")== -1 ){
+  $.ajax({
+    type:"get",
+    url:"/employee/checkRootLogin",
+    datatype:"json",
+    success:function( info ){
+      console.log(info);
+      if(info.error === 400 ){
+        location.href="login.html"
+      }
+    }
+  })
+}
+
 // 页面内容模块的js代码
 $(function(){
 //   1. 二级菜单的显示和隐藏
@@ -39,7 +55,7 @@ $(".category").on("click",function(){
 
 })
   //console.log($('.nav li'));
-  $('.nav li').on("click",function(){
+  $('.nav li:even ').on("click",function(){
     console.log($(this));
     // 让当前点击元素的兄弟的后代a 移除类
     $(this).siblings().children().removeClass("current");
@@ -47,6 +63,12 @@ $(".category").on("click",function(){
     $(this).children().toggleClass("current");
 })
 
+  //console.log($('.nav li:even'));
+  $('.child').children().on("click",function(){
+    console.log(123);
+    $(this).siblings().removeClass("current");
+    $(this).toggleClass("current");
+  });
 
   //点击左侧菜单按钮 让左侧的导航显示和隐藏
 $(".main_menu").on("click",function(){
@@ -79,5 +101,7 @@ $(".main_menu").on("click",function(){
       }
     })
   })
+
+
 
 });

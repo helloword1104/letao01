@@ -95,8 +95,9 @@ a:active {
   background-color: #1D1F21;
   border-left:3px solid #006699;
 }
-.child {
-  padding-left:20px;
+.child a  {
+  text-align: right;
+  padding-right:60px;
 }
 /* 二级菜单结束 */
 
@@ -144,3 +145,11 @@ a:active {
   color: #BC4442;
 }
 /* 下面内容样式结束 */
+
+/* 插件的基本样式 */
+.echarts_1,
+.echarts_2 {
+  width: 48%;
+  height: 400px;
+  /*border: 1px solid red;*/
+}
