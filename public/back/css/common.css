@@ -16,6 +16,9 @@ a:hover,
 a:active {
   text-decoration: none;
 }
+.mb_20 {
+  margin-bottom:20px;
+}
 
 .table.table-bordered th,
 .table.table-bordered td {

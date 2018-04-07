@@ -56,7 +56,7 @@ $(".category").on("click",function(){
 })
   //console.log($('.nav li'));
   $('.nav li:even ').on("click",function(){
-    console.log($(this));
+    //console.log($(this));
     // 让当前点击元素的兄弟的后代a 移除类
     $(this).siblings().children().removeClass("current");
     // 让当前点击的后代添加类
@@ -65,7 +65,7 @@ $(".category").on("click",function(){
 
   //console.log($('.nav li:even'));
   $('.child').children().on("click",function(){
-    console.log(123);
+    //console.log(123);
     $(this).siblings().removeClass("current");
     $(this).toggleClass("current");
   });

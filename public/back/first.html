@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
-  <title>乐淘电商</title>
+  <title>一级分类</title>
   <!-- 引入bootstrap.css文件 -->
   <link rel="stylesheet" href="./lib/bootstrap/css/bootstrap.css">
   <!-- 引入一个基于bootstrap的表单验证的validator.css的文件-->
@@ -34,8 +34,8 @@
       <li>
         <a href="#" class="category"><i class="glyphicon glyphicon-list"></i><span>分类管理</span></a>
         <!-- 二级菜单 -->
-        <div class="child" style="display: none;">
-          <a href="first.html">一级分类</a>
+        <div class="child">
+          <a href="first.html" class="current">一级分类</a>
           <a href="second.html">二级分类</a>
         </div>
       </li>
@@ -53,23 +53,75 @@
     <a class="pull-left main_menu" href="#"><i class="glyphicon glyphicon-align-justify"></i></a>
     <a class="pull-right main_logout" href="#"><i class="glyphicon glyphicon-log-out"></i></a>
   </div>
+
+
   <!--右侧下面的内容 使用bootstrap的容器 container-fluid-->
-
-
   <div class="container-fluid">
     <ol class="breadcrumb">
       <li><a href="index.html">管理系统</a></li>
-      <li class="active">首页</li>
+      <li class="active">分类管理</li>
+      <li class="active">一级分类</li>
     </ol>
-    <!-- 插件echarts容器 -->
     <div class="lt_content">
-      <div class="echarts_1 pull-left"></div>
-      <div class="echarts_2 pull-right"></div>
-    </div>
+      <!-- 添加一个添加一级菜单的按钮-->
+      <button class="btn btn-default mb_20" id="addBtn">添加分类</button>
+      <table class="table table-bordered table-hover">
+        <thead>
+        <tr>
+          <!-- 给每一个th 定死宽度 点击就不会因为内容的变化跳动-->
+          <th style="width: 20%;">序号</th>
+          <th style="width: 80%;">用户名</th>
+        </tr>
+        </thead>
+        <tbody>
+        <!-- 模板坑 -->
+          <!--<tr>-->
+            <!--<td>1</td>-->
+            <!--<td>拉面馆</td>-->
+          <!--</tr>-->
+        </tbody>
+      </table>
 
+      <!-- 分页插件初始化 -->
+      <div class="text-right">
+        <ul id="paginator"></ul>
+      </div>
+    </div>
   </div>
+
+
 </div>
 
+
+<!-- 添加-添加按钮 弹出模态框 -->
+<div class="modal fade" id="firstModal">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+        <h4 class="modal-title">添加分类</h4>
+      </div>
+      <div class="modal-body">
+        <!-- 找到全局样式组件--- 表单 -->
+        <form id="form">
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="请输入一级分类" name="categoryName">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+        <!-- 由于button添加按钮不在form表单中 因此不具备提交表单的能力
+        解决方案: 给form一个id 和 button 的form属性关联 解决此问题
+        或者可以将form标签扩大范围 让button在其内部 但是这种方法有局限性
+        -->
+
+        <!-- 修改button的type类型为submit提交表单的类型-->
+        <button type="submit" class="btn btn-primary" id="add-Btn" form="form">添加</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 <!-- 登录退出的模态框,  配置 data-dismiss="modal" 可以关闭模态框 -->
 <div class="modal fade" id="logoutModal">
@@ -89,6 +141,15 @@
     </div>
   </div>
 </div>
+<script type="text/html" id="first_tmp">
+  {{ each rows v i }}
+    <tr data-id = {{ v.id }}>
+      <td>{{ (page-1)*size + i+1 }}</td>
+      <td>{{ v.categoryName }}</td>
+    </tr>
+  {{ /each }}
+
+</script>
 
 
 
@@ -103,12 +164,13 @@
 <script src="./lib/bootstrap-validator/js/bootstrapValidator.js"></script>
 <!-- 引入插件进度条的js文件 -->
 <script src="./lib/nprogress/nprogress.js"></script>
-<!-- 引入echart 数据分析图插件 -->
-<script src="./lib/echarts/echarts.common.min.js"></script>
+<!-- 引入模板引擎插件 -->
+<script src="./lib/artTemplate/template-web.js"></script>
+<!-- 引入分页插件 -->
+<script src="./lib/bootstrap-paginator/bootstrap-paginator.min.js"></script>
 <!-- 引入自己的js文件-->
 <script src="./js/common.js"></script>
-<!-- 引入index的js文件-->
-<script src="./js/index.js"></script>
-
+<!-- 引入当前页面的js文件-->
+<script src="js/first.js"></script>
 </body>
 </html>
