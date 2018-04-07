@@ -16,6 +16,13 @@ a:hover,
 a:active {
   text-decoration: none;
 }
+
+.table.table-bordered th,
+.table.table-bordered td {
+  text-align: center;
+  vertical-align: middle;
+}
+
 /* 1. 登录页面的基本样式 */
 .body_bg {
   background-color: #222D32;
@@ -152,4 +159,9 @@ a:active {
   width: 48%;
   height: 400px;
   /*border: 1px solid red;*/
+}
+/* 下面的表格 使用bootstrap的css全局样式-表格*/
+.lt_content {
+
+
 }
