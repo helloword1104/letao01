@@ -1,5 +1,5 @@
 /**
- * Created by Administrator on 2018/4/7.
+ * Created by zxf on 2018/4/7.
  */
 $(function(){
   var currentPage = 1;
@@ -90,4 +90,6 @@ $(function(){
       }
     })
   })
+  //var id = window.localStorage.getItem("categoryid")
+  //console.log(id);
 });

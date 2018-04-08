@@ -19,7 +19,9 @@ a:active {
 .mb_20 {
   margin-bottom:20px;
 }
-
+input[type="file"] {
+  display: none;
+}
 .table.table-bordered th,
 .table.table-bordered td {
   text-align: center;

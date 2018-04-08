@@ -77,4 +77,7 @@ $(function(){
     ]
   };
   myChart1.setOption(option2);
+  //var p = 4
+  //localStorage.setItem("categoryid",p);
 });
+

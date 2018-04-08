@@ -62,12 +62,98 @@
       <li class="active">分类管理</li>
       <li class="active">二级分类</li>
     </ol>
+    <div class="lt_content">
+      <!-- 添加一个添加一级菜单的按钮-->
+      <button class="btn btn-default mb_20" id="addBtn">添加分类</button>
+      <table class="table table-bordered table-hover">
+        <thead>
+        <tr>
+          <!-- 给每一个th 定死宽度 点击就不会因为内容的变化跳动-->
+          <th style="width: 10%;">序号</th>
+          <th style="width: 30%;">一级分类名称</th>
+          <th style="width: 30%;">二级分类名称</th>
+          <th style="width: 30%;">二级分类LOGO</th>
+        </tr>
+        </thead>
+        <tbody>
+        <!-- 模板坑 -->
+        <!--<tr>-->
+        <!--<td>1</td>-->
+        <!--<td>拉面馆</td>-->
+        <!--<td>牛肉拉面</td>-->
+        <!--<td><img src="./images/none.png" width="50"></td>-->
+        <!--</tr>-->
+        </tbody>
+      </table>
 
+      <!-- 分页插件初始化 -->
+      <div class="text-right">
+        <ul id="paginator"></ul>
+      </div>
+    </div>
 
   </div>
 </div>
 
 
+<!-- 添加分类的模态框 -->
+<div class="modal fade" id="addModal">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+        <h4 class="modal-title">添加分类</h4>
+      </div>
+      <div class="modal-body">
+        <form id="form">
+          <!-- 添加一个 按钮下拉框 在bootstrap组件里面-->
+          <!-- 注意 每次添加组件或者其他样式代码   最好都用.form-group类包裹 -->
+          <div class="form-group">
+            <!-- Single button -->
+            <div class="btn-group">
+              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                <!-- 让span包括内容   用来获取修改下拉内容值-->
+                <span id="dropdownText">请选择一级分类</span>
+
+                <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu">
+                <!-- 点击添加按钮后的ajax请求数据-->
+                <!--<li><a href="#">拉面馆</a></li>-->
+              </ul>
+
+            </div>
+            <!-- 由于form表单 中数据span并不能传递 需要用隐藏域关联-->
+            <input type="hidden" name="categoryId">
+            <!-- 火热的品牌  前端不用但是要根据传参 给后台传过去-->
+            <input type="hidden" name="hot" value="1">
+            <!-- form表单中的name属性会被提交到后台,后台获取 根据传过去的值进行返回数据-->
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="请输入二级分类" name="brandName">
+          </div>
+          <div class="form-group">
+            <!--<button type="button" class="btn btn-default">上传图片</button>-->
+            <!-- 用label for 属性 关联inout的id 实现捆绑-->
+            <label class=" btn btn-default" for="fileupload">上传图片</label>
+            <input type="file" name="pic1" id="fileupload"  data-url="/category/addSecondCategoryPic" >
+            <div class="form-group" id="imgBox">
+              <img src="./images/none.png" width="100">
+              <input type="hidden" name="brandLogo">
+            </div>
+
+          </div>
+
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+        <!-- html5 新增 form 属性, 可以让表单外的按钮, 与表单关联起来(就相当于是写在了表单里面)-->
+        <button type="submit" class="btn btn-primary" form="form">添加</button>
+      </div>
+    </div>
+  </div>
+</div>
 <!-- 登录退出的模态框,  配置 data-dismiss="modal" 可以关闭模态框 -->
 <div class="modal fade" id="logoutModal">
   <div class="modal-dialog modal-sm">
@@ -87,6 +173,25 @@
   </div>
 </div>
 
+<!--  页面主体内容的模板 -->
+<script type="text/html" id="second_tmp">
+  {{ each rows v i }}
+      <tr>
+        <td>{{ (page-1)*size + i+1}}</td>
+        <td>{{ v.categoryName }}</td>
+        <td>{{ v.brandName }}</td>
+        <td><img src="{{ v.brandLogo ? v.brandLogo :'./images/none.png' }} " width="50"></td>
+      </tr>
+  {{ /each }}
+
+</script>
+
+<!-- 点击添加按钮的ajax请求一级菜单的数据模板-->
+<script type="text/html" id="drap_tmp">
+  {{ each rows v i}}
+  <li><a href="#" data-id = '{{ v.id }}'>{{ v.categoryName }}</a></li>
+  {{ /each }}
+</script>
 
 
 
@@ -102,10 +207,17 @@
 <script src="./lib/nprogress/nprogress.js"></script>
 <!-- 引入echart 数据分析图插件 -->
 <script src="./lib/echarts/echarts.common.min.js"></script>
+<!-- 引入模板引擎插件 -->
+<script src="./lib/artTemplate/template-web.js"></script>
+<!-- 引入分页插件 -->
+<script src="./lib/bootstrap-paginator/bootstrap-paginator.min.js"></script>
+<!-- 引入 jquery-fileupload 包 -->
+<script src="lib/jquery-fileupload/jquery.ui.widget.js"></script>
+<script src="lib/jquery-fileupload/jquery.fileupload.js"></script>
 <!-- 引入自己的js文件-->
 <script src="./js/common.js"></script>
 <!-- 引入index的js文件-->
-<script src="./js/index.js"></script>
+<script src="./js/second.js"></script>
 
 </body>
 </html>
